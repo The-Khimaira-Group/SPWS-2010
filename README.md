@@ -1,7 +1,7 @@
 # SPWS-2010
 Python Interface to SharePoint 2010 Web Services
 
-#Usage
+# Usage
 ## Setup
 PARAMS = {
 	"Site URL" : "",
