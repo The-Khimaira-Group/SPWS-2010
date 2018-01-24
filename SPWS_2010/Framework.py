@@ -2,6 +2,7 @@ import SPWS_2010.config
 
 import requests
 import xmltodict
+from lxml import etree
 from requests_ntlm import HttpNtlmAuth
 
 class soap(object):
