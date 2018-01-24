@@ -1,4 +1,4 @@
-import config
+import SPWS_2010.config
 
 import requests
 import xmltodict
