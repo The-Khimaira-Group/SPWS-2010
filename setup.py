@@ -4,7 +4,7 @@ except ImportError:
     from distutils.core import setup
 
 setup(
-    name = 'SPWS-2010',
+    name = 'SPWS_2010',
     version = '0.1',
     description = 'Python Interface to SharePoint 2010 Web Services',
     url = 'https://github.com/The-Khimaira-Group/SPWS-2010',
@@ -42,6 +42,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     keywords = ['SharePoint','SharePoint Web Services','SharePoint 2010','Business Intelligence','Automation'],
-    packages = ['SPWS-2010'],
+    packages = ['SPWS_2010'],
     install_requires = ['requests', 'xmltodict', 'requests_ntlm'],
 )
