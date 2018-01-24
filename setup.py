@@ -5,7 +5,7 @@ except ImportError:
 
 setup(
     name = 'SPWS_2010',
-    version = '0.1.2',
+    version = '0.1.3',
     description = 'Python Interface to SharePoint 2010 Web Services',
     url = 'https://github.com/The-Khimaira-Group/SPWS-2010',
     download_url = 'https://github.com/The-Khimaira-Group/SPWS-2010/archive/0.1.tar.gz',
