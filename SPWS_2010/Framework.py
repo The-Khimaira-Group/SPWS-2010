@@ -17,10 +17,10 @@ class soap(object):
 		ENV = "{%s}" % MAP['SOAP-ENV']
 		
 		self.envelope = etree.Element(ENV + "Envelope", nsmap=MAP)
-		self.operation = etree.SubElement(etree.SubElement(self.envelope,'{http://schemas.xmlsoap.org/soap/envelope/}Body'), '{"http://schemas.microsoft.com/sharepoint/soap/%s}' % (self.schema) + operation)
+		self.operation = etree.SubElement(etree.SubElement(self.envelope,'{http://schemas.xmlsoap.org/soap/envelope/}Body'), '{http://schemas.microsoft.com/sharepoint/soap/%s}' % (self.schema) + operation)
 	
 	def add_parameter(self, parameter, value=None):
-		sub = etree.SubElement(self.operation, '{"http://schemas.microsoft.com/sharepoint/soap/%s}' % (self.schema) + parameter)
+		sub = etree.SubElement(self.operation, '{http://schemas.microsoft.com/sharepoint/soap/%s}' % (self.schema) + parameter)
 		if value:
 			sub.text = value
 			
@@ -118,7 +118,7 @@ class UserGroup(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 
 class Permissions(SharePoint):
 	def __init__(self, params):
@@ -136,7 +136,7 @@ class Permissions(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 
 class Lists(SharePoint):
 	def __init__(self, params):
@@ -180,7 +180,7 @@ class Lists(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class Sites(SharePoint):
 	def __init__(self, params):
@@ -204,7 +204,7 @@ class Sites(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class Sites(SharePoint):
 	def __init__(self, params):
@@ -228,7 +228,7 @@ class Sites(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 
 class Versions(SharePoint):
 	def __init__(self, params):
@@ -244,7 +244,7 @@ class Versions(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class Views(SharePoint):
 	def __init__(self, params):
@@ -264,7 +264,7 @@ class Views(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class Webs(SharePoint):
 	def __init__(self, params):
@@ -297,7 +297,7 @@ class Webs(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class SiteData(SharePoint):
 	def __init__(self, params):
@@ -322,7 +322,7 @@ class SiteData(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class People(SharePoint):
 	def __init__(self, params):
@@ -337,7 +337,7 @@ class People(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class Meetings(SharePoint):
 	def __init__(self, params):
@@ -362,7 +362,7 @@ class Meetings(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class Imaging(SharePoint):
 	def __init__(self, params):
@@ -385,6 +385,7 @@ class Imaging(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class Forms(SharePoint):
 	def __init__(self, params):
@@ -398,7 +399,7 @@ class Forms(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class DocumentWorkspace(SharePoint):
 	def __init__(self, params):
@@ -421,7 +422,7 @@ class DocumentWorkspace(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class Copy(SharePoint):
 	def __init__(self, params):
@@ -436,7 +437,7 @@ class Copy(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class Alerts(SharePoint):
 	def __init__(self, params):
@@ -450,7 +451,7 @@ class Alerts(SharePoint):
 		
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)
 		
 class Admin(SharePoint):
 	def __init__(self, params):
@@ -466,4 +467,4 @@ class Admin(SharePoint):
 
 	def execute(self, operation, parameters):
 		payload = self.soapPayload(self.Schema, operation, self.Methods, parameters)
-		return self.soapRequest(self.Schema, self.Service, operation, payload)		
+		return self.soapRequest(self.Schema, self.Service, operation, payload, parameters)	
